@@ -3,6 +3,9 @@
 
     <string name="app_name">EulerSolutions</string>
     <string name="action_settings">Settings</string>
+    <string name="intro_string">Welcome to my current Euler Solutions. Please select a problem from the list.</string>
+    <string name="blank_string">Unknown</string>
+    <string name="title_activity_multiples_ab">MultiplesAB</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>
