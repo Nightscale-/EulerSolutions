@@ -23,9 +23,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		ArrayList<ProblemSummary> problems = CompletedProblems.createCompletedProblems();
+		CompletedProblems problems = new CompletedProblems(this);
 		ProblemSelectArrayAdapter problemAdapter = new ProblemSelectArrayAdapter(this, 
-				R.layout.layout_problem_select_row, R.id.problemName, problems);
+				R.layout.layout_problem_select_row, R.id.problemName, problems.createCompletedProblems());
 		
 		setContentView(R.layout.activity_main);
 		ListView problemListView = (ListView) this.findViewById(R.id.problemSelectListview);
@@ -37,9 +37,8 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				ProblemSelectArrayAdapter adapter = (ProblemSelectArrayAdapter) parent.getAdapter();
-				ProblemSummary item = adapter.getItem(position);
-				Intent editItemIntent = new Intent(adapter.getContext(), item.getClass());
-				adapter.getContext().startActivity(editItemIntent);
+				ProblemSummary problem = adapter.getItem(position);
+				adapter.getContext().startActivity(problem.getProblem());
 			}
 	    });
 	}

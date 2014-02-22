@@ -1,12 +1,13 @@
 package com.eulersolutions.model;
 
-@SuppressWarnings("rawtypes")
+import android.content.Intent;
+
 public class ProblemSummary {
 	private String name;
 	private int id;
-	private Class problem;
+	private Intent problem;
 	
-	public ProblemSummary(int newId, String newName, Class newProblem)
+	public ProblemSummary(int newId, String newName, Intent newProblem)
 	{
 		name = newName;
 		id = newId;
@@ -23,7 +24,7 @@ public class ProblemSummary {
 		return id;
 	}
 	
-	public Class getProblem()
+	public Intent getProblem()
 	{
 		return problem;
 	}
