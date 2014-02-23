@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/small_buffer"
             android:text="@string/calculate"
-            android:onClick="calculate" />
+            android:onClick="startCalculation" />
 
         <TextView
             android:id="@+id/textView6"
