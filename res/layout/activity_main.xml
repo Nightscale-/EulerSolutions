@@ -14,7 +14,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/buffer"
+        android:layout_marginBottom="@dimen/mid_buffer"
         android:text="@string/intro_string"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

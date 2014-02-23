@@ -5,6 +5,7 @@ import com.euler.eulersolutions.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
 
 public class MultiplesAB extends Activity {
 
@@ -19,6 +20,11 @@ public class MultiplesAB extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.multiples_ab, menu);
 		return true;
+	}
+	
+	public void calculate (View view)
+	{
+		
 	}
 
 }
