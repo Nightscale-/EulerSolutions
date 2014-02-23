@@ -7,5 +7,7 @@
     <string name="blank_string">Unknown</string>
     <string name="title_activity_multiples_ab">MultiplesAB</string>
     <string name="hello_world">Hello world!</string>
+    <string name="prob1_description">Given a maximum value and two multiples, find the sum of the all of the multiples.</string>
+    <string name="prob1_example">For example, consider a max value of 17 and the multiples 3 and 4. The multiples of 3 and 4 less than 17 are 3, 4, 6, 8, 9, 12, 15, and 16. Their sum is 73.</string>
 
 </resources>

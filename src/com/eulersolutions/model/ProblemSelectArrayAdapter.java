@@ -24,24 +24,25 @@ public class ProblemSelectArrayAdapter extends ArrayAdapter<ProblemSummary> {
 	@Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-		
     	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	View toReturn = inflater.inflate(layoutId, parent, false);
     	TextView problemName = (TextView) toReturn.findViewById(textViewId);
-    	ProblemSummary toShow = this.getItem(position);
-    	
-    	problemName.setText(toShow.getName());
-    	
+    	problemName.setText(buildString(this.getItem(position)));
 	    return toReturn;
     }
 
 	@Override
     public long getItemId(int position) {
-      return position;
+      return this.getItem(position).getId();
     }
 
     @Override
     public boolean hasStableIds() {
-      return false;
+      return true;
+    }
+    
+    public String buildString(ProblemSummary item)
+    {
+    	return "Problem" + item.getId() + ": " + item.getName();
     }
 }
