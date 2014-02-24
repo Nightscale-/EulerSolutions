@@ -1,6 +1,7 @@
 package com.eulersolutions.controllers;
 
 import com.euler.eulersolutions.R;
+import com.eulersolutions.model.MultiplesABCalculator;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,10 +12,13 @@ import android.widget.TextView;
 
 public class MultiplesAB extends Activity {
 
+	MultiplesABCalculator calculator;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_multiples_ab);
+		calculator = new MultiplesABCalculator();
 	}
 
 	@Override
@@ -31,7 +35,7 @@ public class MultiplesAB extends Activity {
 		int firstMultiple = 0;
 		int secondMultiple = 0;
 		int maxValue = 0;
-		long answer = 0;
+		String output = "0";
 		
 		textReader = (EditText) this.findViewById(R.id.prob1FirstMultipleEditText);
 		firstMultiple = Integer.parseInt(textReader.getText().toString());
@@ -42,18 +46,8 @@ public class MultiplesAB extends Activity {
 		textReader = (EditText) this.findViewById(R.id.prob1MaxEditText);
 		maxValue = Integer.parseInt(textReader.getText().toString());
 		
-		answer = calculate(firstMultiple, secondMultiple, maxValue);
+		output = calculator.findAnswer(firstMultiple, secondMultiple, maxValue);
 		textSolution = (TextView) this.findViewById(R.id.prob1SolutionTextView);
-		textSolution.setText( answer + "");
+		textSolution.setText(output);
 	}
-	
-	//No need for a model in this case because the entire solution is
-	//    one straight forward formula
-	public long calculate(int firstMultiple, int secondMultiple, int maxValue)
-	{
-		int toReturn = 0;
-		
-		return toReturn;
-	}
-
 }
