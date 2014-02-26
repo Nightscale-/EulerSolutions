@@ -1,34 +1,30 @@
 package com.eulersolutions.model;
 
-public class MultiplesABCalculator {
+import java.util.List;
 
-	public String findAnswer(int firstMult, int secondMult, int maxValue)
+public class MultiplesABCalculator extends ProblemCalculator{
+	
+	protected boolean validInput(List<Number> values)
 	{
-		long answer = 0;
-		String toReturn = "";
-		
-		if(!validInput(firstMult, secondMult, maxValue))
+		if(values.size() != 3)
 		{
-			return "undetermined. Invalid input detected. All inputs must be integers greater than 0.";
+			return false;
 		}
 		
-		answer = calculate(firstMult, secondMult, maxValue);
-		toReturn = "" + answer;
-		
-		return toReturn;
-	}
-	
-	public boolean validInput(int firstMult, int secondMult, int maxValue)
-	{
-		if(firstMult <= 0 || secondMult <= 0 || maxValue <= 0)
+		if(values.get(0).intValue() <= 0 || values.get(1).intValue() <= 0
+				|| values.get(2).intValue() <= 0)
 		{
 			return false;
 		}
 		return true;
 	}
 	
-	public long calculate(int firstMult, int secondMult, int maxValue)
+	protected Number calculate(List<Number> values)
 	{
+		int firstMult = values.get(0).intValue();
+		int secondMult = values.get(1).intValue();
+		int maxValue = values.get(2).intValue();
+		
 		long firstSum = 0;
 		long secondSum = 0;
 		long duplicateSum = 0;
@@ -42,7 +38,7 @@ public class MultiplesABCalculator {
 		return firstSum + secondSum - duplicateSum;
 	}
 	
-	public long generateSum(int multiple, int maxValue)
+	protected long generateSum(int multiple, int maxValue)
 	{
 		long numOfValues = 0;
 		long maxNm = 0;
