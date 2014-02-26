@@ -2,7 +2,15 @@ package com.eulersolutions.model;
 
 import java.util.List;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 public class MultiplesABCalculator extends ProblemCalculator{
+	
+	public MultiplesABCalculator(Parcel source)
+	{
+		super(source);
+	}
 	
 	protected boolean validInput(List<Number> values)
 	{
@@ -60,4 +68,15 @@ public class MultiplesABCalculator extends ProblemCalculator{
 		//   max value.
 		return numOfValues * multiple;
 	}
+	
+	public static final Parcelable.Creator<MultiplesABCalculator> CREATOR = 
+			new Parcelable.Creator<MultiplesABCalculator>() {
+		public MultiplesABCalculator createFromParcel(Parcel in) {
+			return new MultiplesABCalculator(in);
+		}
+
+		public MultiplesABCalculator[] newArray(int size) {
+			return new MultiplesABCalculator[size];
+		}
+	};
 }
