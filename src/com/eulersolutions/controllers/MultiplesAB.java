@@ -1,6 +1,6 @@
 package com.eulersolutions.controllers;
 
-import com.euler.eulersolutions.R;
+import com.eulersolutions.controllers.R;
 import com.eulersolutions.model.MultiplesABCalculator;
 
 import android.os.Bundle;
