@@ -60,6 +60,12 @@ public class ProblemSummary implements Parcelable{
 		return mTextStrings.get(SOLUTION_INDEX);
 	}
 	
+	public ArrayList<String> getInputStrings()
+	{
+		return new ArrayList<String>(mTextStrings.subList(
+				FIRST_INPUT_INDEX, mTextStrings.size()));
+	}
+	
 	public ProblemCalculator getCalculator()
 	{
 		return mCalculator;
