@@ -1,34 +1,60 @@
 package com.eulersolutions.model;
 
-public class MultiplesABCalculator {
+import java.util.ArrayList;
+import java.util.List;
 
-	public String findAnswer(int firstMult, int secondMult, int maxValue)
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MultiplesABCalculator extends ProblemCalculator{
+	
+	public MultiplesABCalculator()
 	{
-		long answer = 0;
-		String toReturn = "";
-		
-		if(!validInput(firstMult, secondMult, maxValue))
-		{
-			return "undetermined. Invalid input detected. All inputs must be integers greater than 0.";
-		}
-		
-		answer = calculate(firstMult, secondMult, maxValue);
-		toReturn = "" + answer;
-		
-		return toReturn;
+		super();
 	}
 	
-	public boolean validInput(int firstMult, int secondMult, int maxValue)
+	public MultiplesABCalculator(Parcel source)
 	{
-		if(firstMult <= 0 || secondMult <= 0 || maxValue <= 0)
+		super(source);
+	}
+	
+	protected List<Number> parseInput(List<String> values)
+	{
+		ArrayList<Number> toReturn = new ArrayList<Number>();
+		if(values.size() != 3)
+		{
+			return null;
+		}
+		
+		toReturn.add(Integer.parseInt(values.get(0)));
+		toReturn.add(Integer.parseInt(values.get(1)));
+		toReturn.add(Integer.parseInt(values.get(2)));
+		
+		return toReturn;
+		
+	}
+	
+	protected boolean validInput(List<Number> values)
+	{
+		if(values == null || values.size() != 3)
+		{
+			return false;
+		}
+		
+		if(values.get(0).intValue() <= 0 || values.get(1).intValue() <= 0
+				|| values.get(2).intValue() <= 0)
 		{
 			return false;
 		}
 		return true;
 	}
 	
-	public long calculate(int firstMult, int secondMult, int maxValue)
+	protected Number calculate(List<Number> values)
 	{
+		int firstMult = values.get(0).intValue();
+		int secondMult = values.get(1).intValue();
+		int maxValue = values.get(2).intValue();
+		
 		long firstSum = 0;
 		long secondSum = 0;
 		long duplicateSum = 0;
@@ -42,7 +68,7 @@ public class MultiplesABCalculator {
 		return firstSum + secondSum - duplicateSum;
 	}
 	
-	public long generateSum(int multiple, int maxValue)
+	protected long generateSum(int multiple, int maxValue)
 	{
 		long numOfValues = 0;
 		long maxNm = 0;
@@ -64,4 +90,15 @@ public class MultiplesABCalculator {
 		//   max value.
 		return numOfValues * multiple;
 	}
+	
+	public static final Parcelable.Creator<MultiplesABCalculator> CREATOR = 
+			new Parcelable.Creator<MultiplesABCalculator>() {
+		public MultiplesABCalculator createFromParcel(Parcel in) {
+			return new MultiplesABCalculator(in);
+		}
+
+		public MultiplesABCalculator[] newArray(int size) {
+			return new MultiplesABCalculator[size];
+		}
+	};
 }

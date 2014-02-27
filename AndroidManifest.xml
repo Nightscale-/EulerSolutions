@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.eulersolutions.controllers.MultiplesAB"
-            android:label="@string/title_activity_multiples_ab" >
+            android:name="com.eulersolutions.controllers.ProblemPresentationActivity"
+            android:label="@string/title_activity_problem_presentation" >
         </activity>
     </application>
 

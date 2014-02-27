@@ -5,15 +5,9 @@
     <string name="action_settings">Settings</string>
     <string name="intro_string">Welcome to my current Euler Solutions. Please select a problem from the list.</string>
     <string name="blank_string">Unknown</string>
-    <string name="title_activity_multiples_ab">MultiplesAB</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="prob1_description">Given a maximum value and two multiples (all positive), find the sum of the all of the multiples.</string>
-    <string name="prob1_example">For example, consider a max value of 17 and the multiples 3 and 4. The multiples of 3 and 4 less than 17 are 3, 4, 6, 8, 9, 12, 15, and 16. Their sum is 73.</string>
-    <string name="enter_max">Please enter a maximum value:</string>
-    <string name="enter_multiple_1">Please enter the first multiple:</string>
-    <string name="enter_multiple_2">Please enter the second multiple:</string>
     <string name="positive_default">3</string>
     <string name="calculate">Calculate!</string>
     <string name="answer_intro">Your answer is </string>
+    <string name="title_activity_problem_presentation">ProblemPresentationActivity</string>
 
 </resources>
