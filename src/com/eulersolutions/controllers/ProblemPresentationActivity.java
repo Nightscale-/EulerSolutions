@@ -75,7 +75,7 @@ public class ProblemPresentationActivity extends Activity {
 		
 		textViewInputIds[0] = R.id.problemInputOneDescription;
 		textViewInputIds[1] = R.id.problemInputTwoDescription;
-		textViewInputIds[2] = R.id.problemInputTwoDescription;
+		textViewInputIds[2] = R.id.problemInputThreeDescription;
 		
 		editTextInputIds[0] = R.id.problemInputOneEditText;
 		editTextInputIds[1] = R.id.problemInputTwoEditText;
