@@ -115,7 +115,7 @@
             android:id="@+id/prob1SolutionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/blank_string"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
 
