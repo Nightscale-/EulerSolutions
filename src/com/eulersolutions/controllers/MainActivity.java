@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 				ProblemSummary problem = adapter.getItem(position);
 				context = adapter.getContext();
 				displayProblem = new Intent(context, ProblemPresentationActivity.class);
-				displayProblem.putExtra("problem", problem);
+				displayProblem.putExtra(ProblemPresentationActivity.PARCEL_NAME, problem);
 				context.startActivity(displayProblem);
 			}
 	    });
