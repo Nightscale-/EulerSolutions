@@ -7,16 +7,18 @@ public class ProblemSummary implements Parcelable{
 	private String mName;
 	private String mDescription;
 	private String mExample;
+	private String mSolution;
 	private ProblemCalculator mCalculator;
 	private int mNumberOfInputs;
 	private int mId;
 	
-	public ProblemSummary(String name, String description, String example, ProblemCalculator calculator,
+	public ProblemSummary(String name, String description, String example, String solution, ProblemCalculator calculator,
 			int numberOfInputs, int id)
 	{
 		mName = name;
 		mDescription = description;
 		mExample = example;
+		mSolution = solution;
 		mCalculator = calculator;
 		mNumberOfInputs = numberOfInputs;
 		mId = id;
@@ -27,6 +29,7 @@ public class ProblemSummary implements Parcelable{
 		mName = source.readString();
 		mDescription = source.readString();
 		mExample = source.readString();
+		mSolution = source.readString();
 		mCalculator = source.readParcelable(ProblemCalculator.class.getClassLoader());
 		mNumberOfInputs = source.readInt();
 		mId = source.readInt();
@@ -45,6 +48,11 @@ public class ProblemSummary implements Parcelable{
 	public String getExample()
 	{
 		return mExample;
+	}
+	
+	public String getSolution()
+	{
+		return mSolution;
 	}
 	
 	public ProblemCalculator getCalculator()
@@ -73,6 +81,7 @@ public class ProblemSummary implements Parcelable{
 		destination.writeString(mName);
 		destination.writeString(mDescription);
 		destination.writeString(mExample);
+		destination.writeString(mSolution);
 		destination.writeParcelable(mCalculator, flags);
 		destination.writeInt(mNumberOfInputs);
 		destination.writeInt(mId);

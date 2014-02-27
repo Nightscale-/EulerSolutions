@@ -7,6 +7,11 @@ import android.os.Parcelable;
 
 public class MultiplesABCalculator extends ProblemCalculator{
 	
+	public MultiplesABCalculator()
+	{
+		super();
+	}
+	
 	public MultiplesABCalculator(Parcel source)
 	{
 		super(source);

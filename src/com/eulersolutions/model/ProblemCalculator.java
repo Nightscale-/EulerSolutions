@@ -10,6 +10,10 @@ public abstract class ProblemCalculator implements Parcelable{
 	protected abstract boolean validInput(List<Number> values);
 	protected abstract Number calculate(List<Number> values);
 	
+	public ProblemCalculator()
+	{
+	}
+	
 	public ProblemCalculator(Parcel source)
 	{
 	}
