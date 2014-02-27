@@ -1,5 +1,6 @@
 package com.eulersolutions.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Parcel;
@@ -17,9 +18,25 @@ public class MultiplesABCalculator extends ProblemCalculator{
 		super(source);
 	}
 	
+	protected List<Number> parseInput(List<String> values)
+	{
+		ArrayList<Number> toReturn = new ArrayList<Number>();
+		if(values.size() != 3)
+		{
+			return null;
+		}
+		
+		toReturn.add(Integer.parseInt(values.get(0)));
+		toReturn.add(Integer.parseInt(values.get(1)));
+		toReturn.add(Integer.parseInt(values.get(2)));
+		
+		return toReturn;
+		
+	}
+	
 	protected boolean validInput(List<Number> values)
 	{
-		if(values.size() != 3)
+		if(values == null || values.size() != 3)
 		{
 			return false;
 		}

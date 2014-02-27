@@ -1,5 +1,7 @@
 package com.eulersolutions.controllers;
 
+import java.util.ArrayList;
+
 import com.eulersolutions.model.ProblemCalculator;
 import com.eulersolutions.model.ProblemSummary;
 
@@ -14,15 +16,11 @@ import android.widget.TextView;
 public class ProblemPresentationActivity extends Activity {
 
 	public static final String PARCEL_NAME = "problem";
+	public static final int MAX_INPUTS = 3;
 	
-	ProblemSummary problem;
-	
-	//view inputs
-	EditText inputOne;
-	EditText inputTwo;
-	EditText inputThree;
-	EditText inputFour;
-	EditText inputFive;
+	private ProblemSummary problem;
+	private int[] textViewInputIds;
+	private int[] editTextInputIds;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +29,11 @@ public class ProblemPresentationActivity extends Activity {
 		Intent intent = this.getIntent();
 		problem = intent.getParcelableExtra(PARCEL_NAME);
 		
+		//setup the id arrays
+		setupGuiIds();
+		
 		//set up the view text
-		this.setTitle(problem.getName());
-		
-		TextView toModify = (TextView) this.findViewById(R.id.problemDescriptionTextView);
-		toModify.setText(problem.getDescription());
-		
-		toModify = (TextView) this.findViewById(R.id.problemExampleTextView);
-		toModify.setText(problem.getExample());
-		
-		//TODO: handle the solution.
-		
-		//TODO: handle dynamic number of inputs
-		
+		setupInputs(problem);
 	}
 
 	@Override
@@ -55,6 +45,74 @@ public class ProblemPresentationActivity extends Activity {
 	
 	public void startCalculation (View view)
 	{
+		EditText textReader;
+		TextView textSolution = (TextView) this.findViewById(R.id.problemSolutionTextView);
+		Number answer = Integer.valueOf(0);
+		ArrayList<String> values = new ArrayList<String>();
 		ProblemCalculator calculator = problem.getCalculator();
+		
+		for(int index = 0; index < problem.getNumberOfInputs(); index++)
+		{
+			textReader = (EditText) this.findViewById(editTextInputIds[index]);
+			values.add(textReader.getText().toString());
+		}
+		
+		answer = calculator.findAnswer(values);
+		if(answer == null)
+		{
+			textSolution.setText("Invalid");
+		}
+		else
+		{
+			textSolution.setText(answer.toString());
+		}
+	}
+	
+	private void setupGuiIds()
+	{
+		textViewInputIds = new int[MAX_INPUTS];
+		editTextInputIds = new int[MAX_INPUTS];
+		
+		textViewInputIds[0] = R.id.problemInputOneDescription;
+		textViewInputIds[1] = R.id.problemInputTwoDescription;
+		textViewInputIds[2] = R.id.problemInputTwoDescription;
+		
+		editTextInputIds[0] = R.id.problemInputOneEditText;
+		editTextInputIds[1] = R.id.problemInputTwoEditText;
+		editTextInputIds[2] = R.id.problemInputThreeEditText;
+	}
+	
+	private void setupInputs(ProblemSummary newProblem)
+	{
+		TextView toModifyText;
+		EditText toModifyInput;
+		ArrayList<String> inputStrings = newProblem.getInputStrings();
+		
+		this.setTitle(newProblem.getName());
+		
+		toModifyText = (TextView) this.findViewById(R.id.problemDescriptionTextView);
+		toModifyText.setText(newProblem.getDescription());
+		
+		toModifyText = (TextView) this.findViewById(R.id.problemExampleTextView);
+		toModifyText.setText(newProblem.getExample());
+		
+		//TODO: handle the solution and/or proof.
+		
+		//handle dynamic number of inputs
+		for(int index = 0; index < MAX_INPUTS; index++)
+		{
+			toModifyText = (TextView) this.findViewById(textViewInputIds[index]);
+			toModifyInput = (EditText) this.findViewById(editTextInputIds[index]);
+			
+			if(index < newProblem.getNumberOfInputs())
+			{
+				toModifyText.setText(inputStrings.get(index));
+			}
+			else
+			{
+				toModifyText.setVisibility(View.GONE);
+				toModifyInput.setVisibility(View.GONE);
+			}
+		}
 	}
 }
