@@ -4,11 +4,7 @@ import java.util.ArrayList;
 
 public class CompletedProblems {
 	
-	public CompletedProblems()
-	{
-	}
-	
-	public ArrayList<ProblemSummary> createCompletedProblems()
+	public static ArrayList<ProblemSummary> createCompletedProblems()
 	{
 		ArrayList<String> textStrings;
 		ProblemCalculator calculator;

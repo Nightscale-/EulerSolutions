@@ -45,6 +45,8 @@ public class ProblemPresentationActivity extends Activity {
 	
 	public void startCalculation (View view)
 	{
+		boolean validGUI = true;
+		String toAdd = "";
 		EditText textReader;
 		TextView textSolution = (TextView) this.findViewById(R.id.problemSolutionTextView);
 		Number answer = Integer.valueOf(0);
@@ -54,17 +56,31 @@ public class ProblemPresentationActivity extends Activity {
 		for(int index = 0; index < problem.getNumberOfInputs(); index++)
 		{
 			textReader = (EditText) this.findViewById(editTextInputIds[index]);
-			values.add(textReader.getText().toString());
+			toAdd = textReader.getText().toString();
+			if(toAdd.isEmpty())
+			{
+				validGUI = false;
+				index = problem.getNumberOfInputs();
+				textReader.setError("Please enter a positive number");
+			}
+			values.add(toAdd);
 		}
 		
-		answer = calculator.findAnswer(values);
-		if(answer == null)
+		if(validGUI)
 		{
-			textSolution.setText("Invalid");
+			answer = calculator.findAnswer(values);
+			if(answer == null)
+			{
+				textSolution.setText("Invalid");
+			}
+			else
+			{
+				textSolution.setText(answer.toString());
+			}
 		}
 		else
 		{
-			textSolution.setText(answer.toString());
+			textSolution.setText("Invalid");
 		}
 	}
 	

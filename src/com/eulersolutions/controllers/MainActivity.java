@@ -21,9 +21,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		CompletedProblems problems = new CompletedProblems();
 		ProblemSelectArrayAdapter problemAdapter = new ProblemSelectArrayAdapter(this, 
-				R.layout.layout_problem_select_row, R.id.problemName, problems.createCompletedProblems());
+				R.layout.layout_problem_select_row, R.id.problemName, CompletedProblems.createCompletedProblems());
 		
 		setContentView(R.layout.activity_main);
 		ListView problemListView = (ListView) this.findViewById(R.id.problemSelectListview);

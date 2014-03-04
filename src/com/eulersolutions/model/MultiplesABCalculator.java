@@ -31,7 +31,6 @@ public class MultiplesABCalculator extends ProblemCalculator{
 		toReturn.add(Integer.parseInt(values.get(2)));
 		
 		return toReturn;
-		
 	}
 	
 	protected boolean validInput(List<Number> values)
@@ -59,12 +58,20 @@ public class MultiplesABCalculator extends ProblemCalculator{
 		long secondSum = 0;
 		long duplicateSum = 0;
 
+		if(firstMult > secondMult)
+		{
+			int temp = firstMult;
+			firstMult = secondMult;
+			secondMult = temp;
+		}
 		firstSum = generateSum(firstMult, maxValue);
-		secondSum = generateSum(secondMult, maxValue);
-		
-		//There is duplication where both multiples match.
-		duplicateSum = generateSum(firstMult * secondMult, maxValue);
-		
+		if(!sameMultiples(firstMult, secondMult))
+		{
+			secondSum = generateSum(secondMult, maxValue);
+			
+			//There is duplication where both multiples match.
+			duplicateSum = generateSum(firstMult * secondMult, maxValue);
+		}
 		return firstSum + secondSum - duplicateSum;
 	}
 	
@@ -89,6 +96,25 @@ public class MultiplesABCalculator extends ProblemCalculator{
 		//   example, 3 * the total number of 3's of the multiples less than the
 		//   max value.
 		return numOfValues * multiple;
+	}
+	
+	protected boolean sameMultiples(int first, int second)
+	{
+		if(first <= second)
+		{
+			if(second % first == 0)
+			{
+				return true;
+			}
+		}
+		else
+		{
+			if(first % second == 0)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static final Parcelable.Creator<MultiplesABCalculator> CREATOR = 
