@@ -2,7 +2,6 @@ package com.eulersolutions.controllers;
 
 import com.eulersolutions.controllers.R;
 import com.eulersolutions.model.CompletedProblems;
-import com.eulersolutions.model.ProblemSelectArrayAdapter;
 import com.eulersolutions.model.ProblemSummary;
 
 import android.os.Bundle;

@@ -26,6 +26,10 @@
             android:name="com.eulersolutions.controllers.ProblemPresentationActivity"
             android:label="@string/title_activity_problem_presentation" >
         </activity>
+        <activity
+            android:name="com.eulersolutions.controllers.ProblemSolutionActivity"
+            android:label="@string/title_activity_problem_solution" >
+        </activity>
     </application>
 
 </manifest>

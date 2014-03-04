@@ -11,21 +11,25 @@ public class ProblemSummary implements Parcelable{
 	public final static int DESCRIPTION_INDEX = 1;
 	public final static int EXAMPLE_INDEX = 2;
 	public final static int SOLUTION_INDEX = 3;
-	public final static int FIRST_INPUT_INDEX = 4;
+	public final static int SOLUTION_EULER_INDEX = 4;
+	public final static int FIRST_INPUT_INDEX = 5;
 	
 	private ArrayList<String> mTextStrings;
 	private ProblemCalculator mCalculator;
 	private int mNumberOfInputs;
 	private int mId;
 	
-	public ProblemSummary(ArrayList<String>textStrings, ProblemCalculator calculator,
+	public ProblemSummary(String name, String description, String example, 
+			String solution, String eulerSolution, ArrayList<String> inputStrings, ProblemCalculator calculator,
 			int numberOfInputs, int id)
 	{
-		if(textStrings.size() < FIRST_INPUT_INDEX + 1)
-		{
-			return;
-		}
-		mTextStrings = textStrings;
+		mTextStrings = new ArrayList<String>();
+		mTextStrings.add(name);
+		mTextStrings.add(description);
+		mTextStrings.add(example);
+		mTextStrings.add(solution);
+		mTextStrings.add(eulerSolution);
+		mTextStrings.addAll(inputStrings);
 		mCalculator = calculator;
 		mNumberOfInputs = numberOfInputs;
 		mId = id;
@@ -58,6 +62,11 @@ public class ProblemSummary implements Parcelable{
 	public String getSolution()
 	{
 		return mTextStrings.get(SOLUTION_INDEX);
+	}
+	
+	public String getEulerSolution()
+	{
+		return mTextStrings.get(SOLUTION_EULER_INDEX);
 	}
 	
 	public ArrayList<String> getInputStrings()

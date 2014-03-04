@@ -1,6 +1,8 @@
-package com.eulersolutions.model;
+package com.eulersolutions.controllers;
 
 import java.util.List;
+
+import com.eulersolutions.model.ProblemSummary;
 
 import android.content.Context;
 import android.view.LayoutInflater;

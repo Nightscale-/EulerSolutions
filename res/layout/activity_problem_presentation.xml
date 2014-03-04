@@ -119,4 +119,11 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solution_string"
+        android:onClick = "showSolution" />
+
 </LinearLayout>

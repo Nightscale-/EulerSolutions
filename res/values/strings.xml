@@ -9,5 +9,7 @@
     <string name="calculate">Calculate!</string>
     <string name="answer_intro">Your answer is </string>
     <string name="title_activity_problem_presentation">ProblemPresentationActivity</string>
+    <string name="title_activity_problem_solution">ProblemSolutionActivity</string>
+    <string name="solution_string">Show Solution</string>
 
 </resources>

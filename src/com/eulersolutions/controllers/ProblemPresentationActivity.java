@@ -84,6 +84,16 @@ public class ProblemPresentationActivity extends Activity {
 		}
 	}
 	
+	public void showSolution(View view)
+	{
+		Intent solutionIntent = new Intent(this, ProblemSolutionActivity.class);
+		
+		solutionIntent.putExtra(ProblemSolutionActivity.MY_SOLUTION_NAME, problem.getSolution());
+		solutionIntent.putExtra(ProblemSolutionActivity.EULER_SOLUTION_NAME, problem.getEulerSolution());
+		
+		this.startActivity(solutionIntent);
+	}
+	
 	private void setupGuiIds()
 	{
 		textViewInputIds = new int[MAX_INPUTS];
@@ -112,9 +122,6 @@ public class ProblemPresentationActivity extends Activity {
 		toModifyText = (TextView) this.findViewById(R.id.problemExampleTextView);
 		toModifyText.setText(newProblem.getExample());
 		
-		//TODO: handle the solution and/or proof.
-		
-		//handle dynamic number of inputs
 		for(int index = 0; index < MAX_INPUTS; index++)
 		{
 			toModifyText = (TextView) this.findViewById(textViewInputIds[index]);
