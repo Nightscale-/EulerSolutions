@@ -25,11 +25,16 @@ public class MultiplesABCalculator extends ProblemCalculator{
 		{
 			return null;
 		}
-		
-		toReturn.add(Integer.parseInt(values.get(0)));
-		toReturn.add(Integer.parseInt(values.get(1)));
-		toReturn.add(Integer.parseInt(values.get(2)));
-		
+		try
+		{
+			toReturn.add(Integer.parseInt(values.get(0)));
+			toReturn.add(Integer.parseInt(values.get(1)));
+			toReturn.add(Integer.parseInt(values.get(2)));
+		}
+		catch(NumberFormatException error)
+		{
+			return null;
+		}
 		return toReturn;
 	}
 	

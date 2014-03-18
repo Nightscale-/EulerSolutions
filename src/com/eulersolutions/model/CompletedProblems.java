@@ -13,6 +13,7 @@ public class CompletedProblems {
 		String eulerSolution;
 		ArrayList<String> inputStrings;
 		ProblemCalculator calculator;
+		ProblemSummary newItem;
 		int id;
 		
 		ArrayList<ProblemSummary> toReturn = new ArrayList<ProblemSummary>();
@@ -32,7 +33,25 @@ public class CompletedProblems {
 		inputStrings.add("Max Value: ");
 		calculator = new MultiplesABCalculator();
 		id = 1;
-		ProblemSummary newItem = new ProblemSummary(name, description, example,
+		newItem = new ProblemSummary(name, description, example,
+				solution, eulerSolution, inputStrings, calculator, inputStrings.size(), id);
+		toReturn.add(newItem);
+		
+		//add problem two
+		inputStrings = new ArrayList<String>();
+		name = "Even Fibonnaci Numbers";
+		description = "Given a maximum value, find the sum of all of the even "
+				+ "Fibonnaci numbers less than that value";
+		example = "For example, consider a max value of 9. The Fibonnaci numbers"
+				+ " less than 9 are 1, 2, 3, 5, 8. Summing the even numbers, "
+				+ "we get 8 + 2 = 10.";
+		solution = "We can prove that starting at the second number, ever third term afterwards is even."
+				+ " Then we use Binet's formula for finding the nth Fibonnaci value and sum the values.";
+		eulerSolution = "Not sure if my solution matched Euler's yet";
+		inputStrings.add("Maximum Value: ");
+		calculator = new EvenFibonacciNmCalculator();
+		id = 2;
+		newItem = new ProblemSummary(name, description, example,
 				solution, eulerSolution, inputStrings, calculator, inputStrings.size(), id);
 		toReturn.add(newItem);
 		
