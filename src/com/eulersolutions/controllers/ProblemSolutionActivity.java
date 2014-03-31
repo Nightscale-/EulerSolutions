@@ -1,25 +1,35 @@
 package com.eulersolutions.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
-import android.widget.TextView;
 
-public class ProblemSolutionActivity extends Activity {
+public class ProblemSolutionActivity extends Activity implements 
+	ISelectionListener, ISolutionHandler
+{
 
 	public static final String MY_SOLUTION_NAME = "mySolution";
 	public static final String EULER_SOLUTION_NAME = "eulerSolution";
+	
+	private static final String[] solutionTitles = {"My Solution", "Euler Solution"};
+	
+	private ISolutionDisplay solutionDisplay = null;
+	private ArrayList<String> solutions = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_problem_solution);
+		solutions = new ArrayList<String>();
 		
 		Intent intent = this.getIntent();
-		String mySolution = intent.getStringExtra(MY_SOLUTION_NAME);
-		String eulerSolution = intent.getStringExtra(EULER_SOLUTION_NAME);
-		setStrings(mySolution, eulerSolution);
+		solutions.add(intent.getStringExtra(MY_SOLUTION_NAME));
+		solutions.add(intent.getStringExtra(EULER_SOLUTION_NAME));
 	}
 
 	@Override
@@ -28,14 +38,33 @@ public class ProblemSolutionActivity extends Activity {
 		getMenuInflater().inflate(R.menu.problem_solution, menu);
 		return true;
 	}
-	
-	private void setStrings(String solution1, String solution2)
-	{
-		TextView myText = (TextView) this.findViewById(R.id.problemMyProofTextView);
-		TextView eulerText = (TextView) this.findViewById(R.id.problemEulerProofTextView);
-		
-		myText.setText(solution1);
-		eulerText.setText(solution2);
+
+	@Override
+	public void onItemSelected(int position) {
+		if(solutionDisplay != null)
+		{
+			solutionDisplay.setSolution(solutions.get(position));
+		}
+	}
+
+	@Override
+	public List<String> getSolutionTitles() {
+		return Arrays.asList(solutionTitles);
+	}
+
+	@Override
+	public List<String> getSolutions() {
+		return solutions;
+	}
+
+	@Override
+	public int numberOfSolutions() {
+		return solutions.size();
+	}
+
+	@Override
+	public void setSolutionDisplay(ISolutionDisplay newDisplay) {
+		solutionDisplay = newDisplay;
 	}
 
 }
