@@ -1,0 +1,14 @@
+{
+  "id": "2",
+  "name": "Even Fibonnaci Numbers",
+  "description": "Given a maximum value, find the sum of all of the even Fibonnaci numbers less than that value",
+  "example": "For example, consider a max value of 9. The Fibonnaci numbers less than 9 are 1, 2, 3, 5, 8. Summing the even numbers, we get 8 + 2 = 10.",
+  "calculator": "EvenFibonacciNmCalculator",
+  "solutions": [
+    "We can prove that starting at the second number, ever third term afterwards is even. Then we use Binet's formula for finding the nth Fibonnaci value and sum the values.",
+    "My solution was more complicated than Eulers"
+  ],
+  "inputStrings": [
+    "Maximum Value: "
+  ]
+}

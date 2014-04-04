@@ -15,9 +15,9 @@ public class SolutionSelectFragment extends ListFragment {
 
 	private static final String TAG = "EulerSolutions-SolutionSelectFragment";
 	
-	private ISelectionListener selectionCallback;
-	private ISolutionHandler solutionCallback;
-	private ArrayAdapter<String> adapter;
+	private ISelectionListener selectionCallback = null;
+	private ISolutionHandler solutionCallback = null;
+	private ArrayAdapter<String> adapter = null;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -27,6 +27,10 @@ public class SolutionSelectFragment extends ListFragment {
 		
 		adapter = new ArrayAdapter<String>(this.getActivity(), 
 				android.R.layout.simple_list_item_activated_1);
+		if(solutionCallback != null)
+		{
+			adapter.addAll(solutionCallback.getSolutionTitles());
+		}
 		this.setListAdapter(adapter);
 	}
 	
@@ -39,7 +43,6 @@ public class SolutionSelectFragment extends ListFragment {
 		{
 			selectionCallback = (ISelectionListener) activity;
 			solutionCallback = (ISolutionHandler) activity;
-			adapter.addAll(solutionCallback.getSolutionTitles());
 		}
 	}
 	

@@ -1,0 +1,16 @@
+{
+  "id": "1",
+  "name": "Multiples of A and B",
+  "description": "Given a maximum value and two multiples (all positive), find the sum of the all of the multiples.",
+  "example": "For example, consider a max value of 17 and the multiples 3 and 4. The multiples of 3 and 4 less than 17 are 3, 4, 6, 8, 9, 12, 15, and 16. Their sum is 73.",
+  "calculator": "MultiplesABCalculator",
+  "solutions": [
+    "Using modulus division, we can find the greatest number that divides and move from there.",
+    "My solution matched the Euler Solution"
+  ],
+  "inputStrings": [
+    "First Multiple: ",
+    "Second Multiple: ",
+    "Max Value: "
+  ]
+}

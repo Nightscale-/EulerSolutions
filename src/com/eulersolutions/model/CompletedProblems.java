@@ -1,13 +1,137 @@
 package com.eulersolutions.model;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import com.eulersolutions.controllers.R;
+
+import android.content.Context;
 import android.util.Log;
 
 public class CompletedProblems {
 	
 	private static final String TAG = "EulerSolutions-CompletedProblems";
+	private static final int[] IDS = {R.raw.problem001,
+									  R.raw.problem002};
+	private ArrayList<ProblemSummary> problems = new ArrayList<ProblemSummary>();
 	
+	private Context parentContext;
+	@SuppressWarnings("rawtypes")
+	public CompletedProblems(Context newContext)
+	{
+		parentContext = newContext;
+		for(int id : IDS)
+		{
+			InputStream inputStream = parentContext.getResources().openRawResource(id);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+			StringBuffer buffer = new StringBuffer("");
+			JSONObject object = null;
+			int problemId = -1;
+			String name = "";
+			String description = "";
+			String example = "";
+			String solution = "";
+			String eulerSolution = "";
+			ArrayList<String> inputStrings = new ArrayList<String>();
+			String calcName = "";
+			ProblemCalculator calculator = null;
+			ProblemSummary newItem = null;
+			
+			Class calcClass = null;
+			
+			try
+			{
+				String line = "";
+				while((line = reader.readLine()) != null)
+				{
+					buffer.append(line);
+				}
+				
+				object = (JSONObject) new JSONTokener(buffer.toString()).nextValue();
+				problemId = object.getInt("id");
+				name = object.getString("name");
+				description = object.getString("description");
+				example = object.getString("example");
+				calcName = object.getString("calculator");
+				
+				JSONArray jsonArray = object.getJSONArray("solutions");
+				solution = jsonArray.getString(0);
+				eulerSolution = jsonArray.getString(1);
+				
+				jsonArray = object.getJSONArray("inputStrings");
+				for(int index = 0; index < jsonArray.length(); index++)
+				{
+					inputStrings.add(jsonArray.getString(index));
+				}
+				
+				calcClass = Class.forName("com.eulersolutions.model." + calcName);
+				Constructor constructor = calcClass.getConstructor();
+				calculator = (ProblemCalculator) constructor.newInstance();
+				
+				newItem = new ProblemSummary(name, description, example,
+						solution, eulerSolution, inputStrings, calculator,
+						inputStrings.size(), problemId);
+				problems.add(newItem);
+			}
+			catch(IOException e)
+			{
+				Log.i(TAG, "IO Reading Error");
+				e.printStackTrace();	
+			}
+			catch(JSONException e)
+			{
+				Log.i(TAG, "JSON read error");
+				e.printStackTrace();
+			}
+			catch(ClassNotFoundException e)
+			{
+				Log.i(TAG, "Calc class not found");
+				e.printStackTrace();
+			}
+			catch(NoSuchMethodException e)
+			{
+				Log.i(TAG, "Calc class could not find constructor");
+				e.printStackTrace();
+			}
+			catch (IllegalArgumentException e) 
+			{
+				Log.i(TAG, "Calc class Illegal argument in constructor");
+				e.printStackTrace();
+			}
+			catch (InstantiationException e) 
+			{
+				Log.i(TAG, "Calc class instance exception");
+				e.printStackTrace();
+			}
+			catch (IllegalAccessException e)
+			{
+				Log.i(TAG, "Calc class illegal access");
+				e.printStackTrace();
+			}
+			catch (InvocationTargetException e)
+			{
+				Log.i(TAG, "Calc class invocation target exception");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public ArrayList<ProblemSummary> getCompletedProblems()
+	{
+		return problems;
+	}
+	
+	@Deprecated
 	public static ArrayList<ProblemSummary> createCompletedProblems()
 	{
 		Log.i(TAG, "Entered createCompletedProblems");
