@@ -4,16 +4,14 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class SolutionSelectFragment extends ListFragment {
 
-	private static final String[] solutionTitles = {"My Solution", "Euler Solution"};
 	private static final String TAG = "EulerSolutions-SolutionSelectFragment";
+	
 	private ISelectionListener selectionCallback;
 	private ISolutionHandler solutionCallback;
 	private ArrayAdapter<String> adapter;
@@ -25,7 +23,7 @@ public class SolutionSelectFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 		
 		adapter = new ArrayAdapter<String>(this.getActivity(), 
-				android.R.layout.simple_list_item_activated_1, solutionTitles);
+				android.R.layout.simple_list_item_activated_1);
 		this.setListAdapter(adapter);
 	}
 	
@@ -38,7 +36,7 @@ public class SolutionSelectFragment extends ListFragment {
 		{
 			selectionCallback = (ISelectionListener) activity;
 			solutionCallback = (ISolutionHandler) activity;
-			//adapter.addAll(solutionCallback.getSolutionTitles());
+			adapter.addAll(solutionCallback.getSolutionTitles());
 		}
 	}
 	
