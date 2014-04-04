@@ -8,19 +8,19 @@ import android.util.Log;
 
 public class ProblemSummary implements Parcelable{
 	
-	public final static int NAME_INDEX = 0;
-	public final static int DESCRIPTION_INDEX = 1;
-	public final static int EXAMPLE_INDEX = 2;
-	public final static int SOLUTION_INDEX = 3;
-	public final static int SOLUTION_EULER_INDEX = 4;
-	public final static int FIRST_INPUT_INDEX = 5;
-	
 	private static final String TAG = "EulerSolutions-ProblemSummary";
 	
 	private ArrayList<String> mTextStrings;
 	private ProblemCalculator mCalculator;
 	private int mNumberOfInputs;
 	private int mId;
+	
+	public final static int NAME_INDEX = 0;
+	public final static int DESCRIPTION_INDEX = 1;
+	public final static int EXAMPLE_INDEX = 2;
+	public final static int SOLUTION_INDEX = 3;
+	public final static int SOLUTION_EULER_INDEX = 4;
+	public final static int FIRST_INPUT_INDEX = 5;
 	
 	public ProblemSummary(String name, String description, String example, 
 			String solution, String eulerSolution, ArrayList<String> inputStrings, ProblemCalculator calculator,

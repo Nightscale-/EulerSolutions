@@ -15,15 +15,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class ProblemPresentationActivity extends Activity {
-
-	public static final String PARCEL_NAME = "problem";
-	public static final int MAX_INPUTS = 3;
 	
 	private static final String TAG = "EulerSolutions-ProblemPresentationActivity";
 	
 	private ProblemSummary problem;
 	private int[] textViewInputIds;
 	private int[] editTextInputIds;
+	
+	public static final String PARCEL_NAME = "problem";
+	public static final int MAX_INPUTS = 3;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -1,5 +1,8 @@
 package com.eulersolutions.controllers;
 
+import com.eulersolutions.interfaces.ISolutionDisplay;
+import com.eulersolutions.interfaces.ISolutionHandler;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,10 +13,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class SolutionDisplayFragment extends Fragment implements ISolutionDisplay{
-
-	private TextView solutionDisplay;
 	
 	private static final String TAG = "EulerSolutions-SolutionDisplayFragment";
+	
+	private TextView solutionDisplay;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

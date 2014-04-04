@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.eulersolutions.interfaces.ISelectionListener;
+import com.eulersolutions.interfaces.ISolutionDisplay;
+import com.eulersolutions.interfaces.ISolutionHandler;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,15 +17,15 @@ import android.view.Menu;
 public class ProblemSolutionActivity extends Activity implements 
 	ISelectionListener, ISolutionHandler
 {
-
-	public static final String MY_SOLUTION_NAME = "mySolution";
-	public static final String EULER_SOLUTION_NAME = "eulerSolution";
 	
 	private static final String[] solutionTitles = {"My Solution", "Euler Solution"};
 	private static final String TAG = "EulerSolution-ProblemSolutionActivity";
 	
 	private ISolutionDisplay solutionDisplay = null;
 	private ArrayList<String> solutions = null;
+
+	public static final String MY_SOLUTION_NAME = "mySolution";
+	public static final String EULER_SOLUTION_NAME = "eulerSolution";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

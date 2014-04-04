@@ -1,4 +1,4 @@
-package com.eulersolutions.controllers;
+package com.eulersolutions.interfaces;
 
 public interface ISelectionListener {
 	public void onItemSelected(int position);

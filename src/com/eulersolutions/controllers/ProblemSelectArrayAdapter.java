@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 public class ProblemSelectArrayAdapter extends ArrayAdapter<ProblemSummary> {
 
+	private static final String TAG = "EulerSolution-ProblemSelectArrayAdapter";
+	
 	private int layoutId;
 	private int textViewId;
-	
-	private static final String TAG = "EulerSolution-ProblemSelectArrayAdapter";
 	
 	public ProblemSelectArrayAdapter(Context context, int resource, int textViewResourceId, List <ProblemSummary> newItems) {
 		super(context, resource, textViewResourceId);

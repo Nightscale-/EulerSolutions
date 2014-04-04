@@ -1,4 +1,4 @@
-package com.eulersolutions.controllers;
+package com.eulersolutions.interfaces;
 
 import java.util.List;
 

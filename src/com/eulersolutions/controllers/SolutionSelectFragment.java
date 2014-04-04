@@ -1,5 +1,8 @@
 package com.eulersolutions.controllers;
 
+import com.eulersolutions.interfaces.ISelectionListener;
+import com.eulersolutions.interfaces.ISolutionHandler;
+
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
