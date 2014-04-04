@@ -2,10 +2,15 @@ package com.eulersolutions.model;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 public class CompletedProblems {
+	
+	private static final String TAG = "EulerSolutions-CompletedProblems";
 	
 	public static ArrayList<ProblemSummary> createCompletedProblems()
 	{
+		Log.i(TAG, "Entered createCompletedProblems");
 		String name;
 		String description;
 		String example;

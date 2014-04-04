@@ -5,8 +5,11 @@ import java.util.List;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class EvenFibonacciNmCalculator extends ProblemCalculator {
+	
+	private static final String TAG = "EulerSolutions-EvenFibNmCalc";
 
 	public EvenFibonacciNmCalculator()
 	{
@@ -20,6 +23,7 @@ public class EvenFibonacciNmCalculator extends ProblemCalculator {
 	
 	@Override
 	protected boolean validInput(List<Number> values) {
+		Log.i(TAG, "entered Valid Input");
 		if(values == null || values.size() != 1)
 		{
 			return false;
@@ -34,7 +38,7 @@ public class EvenFibonacciNmCalculator extends ProblemCalculator {
 
 	@Override
 	protected List<Number> parseInput(List<String> values) {
-		
+		Log.i(TAG, "entered parse input");
 		ArrayList<Number> toReturn = new ArrayList<Number>();
 		
 		if(values.size() != 1)
@@ -56,6 +60,7 @@ public class EvenFibonacciNmCalculator extends ProblemCalculator {
 
 	@Override
 	protected Number calculate(List<Number> values) {
+		Log.i(TAG, "entered Calculate");
 		Long toReturn = Long.valueOf(0);
 		long maxValue = (Long) values.get(0);
 		long sum = 0;
@@ -88,6 +93,7 @@ public class EvenFibonacciNmCalculator extends ProblemCalculator {
 	
 	private long calculateNFibNm(int sequenceNm)
 	{
+		Log.i(TAG, "entered CalculateNFibNm");
 		double firstComponent = 0;
 		double secondComponent = 0;
 		double tempInternal = 0;

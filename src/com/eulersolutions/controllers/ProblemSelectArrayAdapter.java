@@ -5,6 +5,7 @@ import java.util.List;
 import com.eulersolutions.model.ProblemSummary;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,11 @@ public class ProblemSelectArrayAdapter extends ArrayAdapter<ProblemSummary> {
 	private int layoutId;
 	private int textViewId;
 	
+	private static final String TAG = "EulerSolution-ProblemSelectArrayAdapter";
+	
 	public ProblemSelectArrayAdapter(Context context, int resource, int textViewResourceId, List <ProblemSummary> newItems) {
 		super(context, resource, textViewResourceId);
+		Log.i(TAG, "Creating Object");
 		layoutId = resource;
 		textViewId = textViewResourceId;
 		this.addAll(newItems);
@@ -26,6 +30,7 @@ public class ProblemSelectArrayAdapter extends ArrayAdapter<ProblemSummary> {
 	@Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
+		Log.i(TAG, "Building the View");
     	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	View toReturn = inflater.inflate(layoutId, parent, false);
     	TextView problemName = (TextView) toReturn.findViewById(textViewId);
@@ -45,6 +50,7 @@ public class ProblemSelectArrayAdapter extends ArrayAdapter<ProblemSummary> {
     
     public String buildString(ProblemSummary item)
     {
+    	Log.i(TAG, "Building the String");
     	return "Problem" + item.getId() + ": " + item.getName();
     }
 }

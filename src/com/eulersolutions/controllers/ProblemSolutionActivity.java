@@ -7,6 +7,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 
 public class ProblemSolutionActivity extends Activity implements 
@@ -17,12 +18,14 @@ public class ProblemSolutionActivity extends Activity implements
 	public static final String EULER_SOLUTION_NAME = "eulerSolution";
 	
 	private static final String[] solutionTitles = {"My Solution", "Euler Solution"};
+	private static final String TAG = "EulerSolution-ProblemSolutionActivity";
 	
 	private ISolutionDisplay solutionDisplay = null;
 	private ArrayList<String> solutions = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.i(TAG, "Entered onCreate");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_problem_solution);
 		solutions = new ArrayList<String>();
@@ -41,6 +44,7 @@ public class ProblemSolutionActivity extends Activity implements
 
 	@Override
 	public void onItemSelected(int position) {
+		Log.i(TAG, "Entered onItemSelected");
 		if(solutionDisplay != null)
 		{
 			solutionDisplay.setSolution(solutions.get(position));
@@ -66,5 +70,4 @@ public class ProblemSolutionActivity extends Activity implements
 	public void setSolutionDisplay(ISolutionDisplay newDisplay) {
 		solutionDisplay = newDisplay;
 	}
-
 }

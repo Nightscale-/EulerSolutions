@@ -5,8 +5,11 @@ import java.util.List;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class MultiplesABCalculator extends ProblemCalculator{
+	
+	private static final String TAG = "EulerSolutions-MultABCalc";
 	
 	public MultiplesABCalculator()
 	{
@@ -20,6 +23,7 @@ public class MultiplesABCalculator extends ProblemCalculator{
 	
 	protected List<Number> parseInput(List<String> values)
 	{
+		Log.i(TAG, "entered Parse Input");
 		ArrayList<Number> toReturn = new ArrayList<Number>();
 		if(values.size() != 3)
 		{
@@ -40,6 +44,7 @@ public class MultiplesABCalculator extends ProblemCalculator{
 	
 	protected boolean validInput(List<Number> values)
 	{
+		Log.i(TAG, "entered Valid Input");
 		if(values == null || values.size() != 3)
 		{
 			return false;
@@ -55,6 +60,7 @@ public class MultiplesABCalculator extends ProblemCalculator{
 	
 	protected Number calculate(List<Number> values)
 	{
+		Log.i(TAG, "entereing Calculate");
 		int firstMult = values.get(0).intValue();
 		int secondMult = values.get(1).intValue();
 		int maxValue = values.get(2).intValue();
@@ -82,6 +88,7 @@ public class MultiplesABCalculator extends ProblemCalculator{
 	
 	protected long generateSum(int multiple, int maxValue)
 	{
+		Log.i(TAG, "entering Generate Sum");
 		long numOfValues = 0;
 		long maxNm = 0;
 		
@@ -105,6 +112,7 @@ public class MultiplesABCalculator extends ProblemCalculator{
 	
 	protected boolean sameMultiples(int first, int second)
 	{
+		Log.i(TAG, "entering Same Multiples");
 		if(first <= second)
 		{
 			if(second % first == 0)

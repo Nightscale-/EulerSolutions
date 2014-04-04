@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class ProblemSummary implements Parcelable{
 	
@@ -14,6 +15,8 @@ public class ProblemSummary implements Parcelable{
 	public final static int SOLUTION_EULER_INDEX = 4;
 	public final static int FIRST_INPUT_INDEX = 5;
 	
+	private static final String TAG = "EulerSolutions-ProblemSummary";
+	
 	private ArrayList<String> mTextStrings;
 	private ProblemCalculator mCalculator;
 	private int mNumberOfInputs;
@@ -23,6 +26,7 @@ public class ProblemSummary implements Parcelable{
 			String solution, String eulerSolution, ArrayList<String> inputStrings, ProblemCalculator calculator,
 			int numberOfInputs, int id)
 	{
+		Log.i(TAG, "Creating Object");
 		mTextStrings = new ArrayList<String>();
 		mTextStrings.add(name);
 		mTextStrings.add(description);

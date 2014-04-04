@@ -3,6 +3,7 @@ package com.eulersolutions.controllers;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,20 @@ public class SolutionDisplayFragment extends Fragment implements ISolutionDispla
 
 	private TextView solutionDisplay;
 	
+	private static final String TAG = "EulerSolutions-SolutionDisplayFragment";
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
+		Log.i(TAG, "Entered onCreateView");
 		return inflater.inflate(R.layout.fragment_solution_display, container, false);
 	}
 	
 	@Override
 	public void onAttach(Activity activity)
 	{
+		Log.i(TAG, "entered onAttach");
 		ISolutionHandler handler;
 		
 		super.onAttach(activity);
@@ -35,8 +40,8 @@ public class SolutionDisplayFragment extends Fragment implements ISolutionDispla
 	
 	@Override
 	public void setSolution(String solution) {
+		Log.i(TAG, "entered Set Solution");
 		solutionDisplay = (TextView) this.getView().findViewById(R.id.solutionDisplayTextView);
 		solutionDisplay.setText(solution);
 	}
-
 }

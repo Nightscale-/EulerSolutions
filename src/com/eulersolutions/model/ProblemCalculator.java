@@ -1,12 +1,16 @@
 package com.eulersolutions.model;
 
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 @SuppressLint("ParcelCreator")
 public abstract class ProblemCalculator implements Parcelable{
+	
+	private static final String TAG = "EulerSolutions-ProblemCalculator";
 	
 	protected abstract boolean validInput(List<Number> values);
 	protected abstract List<Number> parseInput(List<String> values);
@@ -22,6 +26,7 @@ public abstract class ProblemCalculator implements Parcelable{
 	
 	public Number findAnswer(List<String> inputValues){
 		
+		Log.i(TAG, "entering Find Answer");
 		List<Number> values = parseInput(inputValues);
 		
 		if(!validInput(values))

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,9 +16,12 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends Activity {
-	
+
+	private static final String TAG = "EulerSolutions-MainActivity";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.i(TAG, "Entered on Create");
 		super.onCreate(savedInstanceState);
 		
 		ProblemSelectArrayAdapter problemAdapter = new ProblemSelectArrayAdapter(this, 

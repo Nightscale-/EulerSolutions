@@ -3,6 +3,7 @@ package com.eulersolutions.controllers;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 public class SolutionSelectFragment extends ListFragment {
 
 	private static final String[] solutionTitles = {"My Solution", "Euler Solution"};
+	private static final String TAG = "EulerSolutions-SolutionSelectFragment";
 	private ISelectionListener selectionCallback;
 	private ISolutionHandler solutionCallback;
 	private ArrayAdapter<String> adapter;
@@ -19,6 +21,7 @@ public class SolutionSelectFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
+		Log.i(TAG, "entered onCreate");
 		super.onCreate(savedInstanceState);
 		
 		adapter = new ArrayAdapter<String>(this.getActivity(), 
@@ -29,6 +32,7 @@ public class SolutionSelectFragment extends ListFragment {
 	@Override
 	public void onAttach(Activity activity)
 	{
+		Log.i(TAG, "entered onAttach");
 		super.onAttach(activity);
 		if((activity instanceof ISelectionListener) && (activity instanceof ISolutionHandler))
 		{
@@ -41,6 +45,7 @@ public class SolutionSelectFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
+		Log.i(TAG, "entered onActivityCreated");
 		super.onActivityCreated(savedInstanceState);
 		this.getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 	}
@@ -48,6 +53,7 @@ public class SolutionSelectFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View view, int position, long id)
 	{
+		Log.i(TAG, "entered onListItemClicked");
 		if(selectionCallback != null)
 			selectionCallback.onItemSelected(position);
 	}

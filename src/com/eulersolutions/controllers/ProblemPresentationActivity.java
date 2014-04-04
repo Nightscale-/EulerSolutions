@@ -8,6 +8,7 @@ import com.eulersolutions.model.ProblemSummary;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -18,12 +19,15 @@ public class ProblemPresentationActivity extends Activity {
 	public static final String PARCEL_NAME = "problem";
 	public static final int MAX_INPUTS = 3;
 	
+	private static final String TAG = "EulerSolutions-ProblemPresentationActivity";
+	
 	private ProblemSummary problem;
 	private int[] textViewInputIds;
 	private int[] editTextInputIds;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.i(TAG, "Entered onCreate");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_problem_presentation);
 		Intent intent = this.getIntent();
@@ -45,6 +49,7 @@ public class ProblemPresentationActivity extends Activity {
 	
 	public void startCalculation (View view)
 	{
+		Log.i(TAG, "Entered Start Calculation");
 		boolean validGUI = true;
 		String toAdd = "";
 		EditText textReader;
@@ -86,6 +91,7 @@ public class ProblemPresentationActivity extends Activity {
 	
 	public void showSolution(View view)
 	{
+		Log.i(TAG, "Entered Show Solution");
 		Intent solutionIntent = new Intent(this, ProblemSolutionActivity.class);
 		
 		solutionIntent.putExtra(ProblemSolutionActivity.MY_SOLUTION_NAME, problem.getSolution());
@@ -96,6 +102,7 @@ public class ProblemPresentationActivity extends Activity {
 	
 	private void setupGuiIds()
 	{
+		Log.i(TAG, "Entered Gui ID Setup");
 		textViewInputIds = new int[MAX_INPUTS];
 		editTextInputIds = new int[MAX_INPUTS];
 		
@@ -110,6 +117,7 @@ public class ProblemPresentationActivity extends Activity {
 	
 	private void setupInputs(ProblemSummary newProblem)
 	{
+		Log.i(TAG, "Entered Input Setup");
 		TextView toModifyText;
 		EditText toModifyInput;
 		ArrayList<String> inputStrings = newProblem.getInputStrings();
