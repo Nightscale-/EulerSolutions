@@ -5,8 +5,23 @@
   "example": "For example, consider a max value of 17 and the multiples 3 and 4. The multiples of 3 and 4 less than 17 are 3, 4, 6, 8, 9, 12, 15, and 16. Their sum is 73.",
   "calculator": "MultiplesABCalculator",
   "solutions": [
-    "Using modulus division, we can find the greatest number that divides and move from there.",
-    "My solution matched the Euler Solution"
+    [
+      "Let A, B, and M be natural numbers. For an example to help us understand, let A be 3, B be 5, and M be 20. We want to find the sum of all of the multiples of A and B less than M. Let us start by finding the sum of multiples of A less than M. In terms of our example, we are going to find the sum of the multiples of 3 less than 20. We can do this manually by testing every value less M is divisible by A, but this can be a time consuming process if our given M is large. Instead, we need to think about what it means to be divisible by A. To that end, let X and Y be natural numbers and assume that when we mention even division, we are refering to division with no remainder. We know that to be evenly divisible by a value, there must be some multiplication with that value that equals another value, ie if A evenly divides Y, then some X time A equals Y. For example, 3 evenly divides 12, so 3 times some value, 4 in this case, equals 12. Now we take a step into what we know of multiplication to make it relate to sums. We know that A time X is the same as A plus A plus A plus A... until we have X A's. so 3 times 4 equals 3 + 3 + 3 + 3. We have now related even division to addition and sums. Now we can think of our problem in terms of finding how many A's there are less than M, ie how many 3's there are less than 20. So, our sum is now (1 + 2 + 3 + 4 ... W) * A. ",
+      "This would improve our process time, but we can do better still. Notice that in our sum, we are adding every value up to some largest value W. If we think back to our math classes, we know that the summation of a sequential series is (W + 1)W/2. If we can find this W, we will know how many A's there are less than M. To that end, lets consider dividing M - 1 by A. Remember, we are looking for values less than M, not less than or equal. This division can be either even or uneven. If the division is even, than we know that this is the largest value divisible by A less than M. So (M - 1)/ A = W. If the division is uneven, we will have some remainder R. If we can remove this remainder, however, we would find our W. To that end, let Floor(X) be a function that removes the remainder from a division. For example, if (M - 1)/ A = W + R, then Floor(W + R) = R. In addition, we can use this function on both even and uneven division cases as removing a remainder that isn't there will return the same value, ie Floor(W) = W. ",
+      "At last, we have what we need to find the sum of multiples of A less than M, and we can do it in constant time. Let's list out the formulas we are going to use.",
+      "     V / X = Y",
+      "     X * Y = (X + X + X + ... Yth X)",
+      "     Floor(X + Y) = X",
+      "     Summation(X) = (X + 1)* X / 2",
+      "So lets put it together.",
+      "     MultSum(A, M) = ((Floor((M-1)/A) + 1)* Floor((M-1)/A) / 2) * A",
+      "Using this formula, we find the total instances of A less than M and then multiply that amount by A. From here, we apply this same formula to our second multiple to get a second sum. Before we finish, though, we also have to find the sum of the multiples of (A * B) because these values will be added twice in our formula. So to finish,",
+      "     A sum + B sum - A * B sum = Answer.",
+      "This will give us our final answer."
+    ],
+    [
+      "My solution matched the Euler Solution"
+    ]
   ],
   "inputStrings": [
     "First Multiple: ",

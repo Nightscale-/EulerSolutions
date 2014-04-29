@@ -65,8 +65,8 @@ public class CompletedProblems {
 				calcName = object.getString("calculator");
 				
 				JSONArray jsonArray = object.getJSONArray("solutions");
-				solution = jsonArray.getString(0);
-				eulerSolution = jsonArray.getString(1);
+				solution = buildSolution(jsonArray.getJSONArray(0));
+				eulerSolution = buildSolution(jsonArray.getJSONArray(1));
 				
 				jsonArray = object.getJSONArray("inputStrings");
 				for(int index = 0; index < jsonArray.length(); index++)
@@ -124,6 +124,18 @@ public class CompletedProblems {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private String buildSolution(JSONArray solutionArray) throws JSONException
+	{
+		StringBuilder builder = new StringBuilder();
+		for(int index = 0; index < solutionArray.length(); index++)
+		{
+			builder.append("     ");
+			builder.append(solutionArray.getString(index));
+			builder.append(System.getProperty("line.separator"));
+		}
+		return builder.toString();
 	}
 	
 	public ArrayList<ProblemSummary> getCompletedProblems()

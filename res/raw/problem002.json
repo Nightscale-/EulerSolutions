@@ -5,10 +5,14 @@
   "example": "For example, consider a max value of 9. The Fibonnaci numbers less than 9 are 1, 2, 3, 5, 8. Summing the even numbers, we get 8 + 2 = 10.",
   "calculator": "EvenFibonacciNmCalculator",
   "solutions": [
-    "We can prove that starting at the second number, ever third term afterwards is even. Then we use Binet's formula for finding the nth Fibonnaci value and sum the values.",
-    "My solution was more complicated than Eulers"
+    [
+      "For this problem, we want to find the sum of the even fibonnaci numbers less than a given value. At first glance, we could do a brute force method and test each fibonnaci number for its evenness until we reach the given value, but we can refine our approch. First, lets consider several fibonnaci numbers from the beginning. They are 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, and so on. Looking at this list, we notice that starting at 2, every two numbers, there is a third number that is even; ie 2, skip, skip, 8, skip, skip, 34. Let us prove using induction that starting at two, every third number is even. Using the list we made already, we have our base case. Now lets find the induction case. That is, if we assume that the nth value is even, then we must prove that the nth + 3 value is also even. Let us set nth equal to 2k. We know that the (nth + 3) value equals (nth + 2) + (nth + 1); which also leads to (nth + 1) + nth + (nth + 1) which equals nth + 2(nth + 1). substituting the nth gives up 2k + 2(nth + 1) which equals 2(k + (nth + 1)). So, (nth + 3) = 2(k + (nth + 1)), which is even. This proves that the third terms of the fibonnaci sequance are even. With this information, we now only need a third of the fibonnaci sequance to find our answer. To find the fibonnaci numbers we need, we will use Binet's formula for the nth fibonnaci number. The formula is Fib(n) = (Phi^n - (-Phi)^-n)/sqrt(5) where Phi is the golden ratio. With Binet's formula, and our knowledge of which values of the fibonnaci sequence are even, we can find our solution."
+    ],
+    [
+      "Euler notices that there is an additional pattern in the even values that eliminates the need for Binet's formula from our current solution. Euler notices that the even terms of the sequence form a new formula. Looking at the sequence, we see 2, 8, 34, 144, and so on. Euler notices that each value E(n) can be represented with 4*E(n-1) + E(n-2). So, E(n) = 4 * E(n-1) + E(n-2)."
+    ]
   ],
   "inputStrings": [
-    "Maximum Value: "
+    "Maximum Value:  "
   ]
 }
