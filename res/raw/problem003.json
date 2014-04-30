@@ -1,0 +1,18 @@
+{
+  "id": "3",
+  "name": "Largest Prime Factors",
+  "description": "Given a value, find the largest prime factor of that value.",
+  "example": "For Example, given 13195, we can find that the prime factors are 5, 7, 13, and 29. Thus, 29 is the answer.",
+  "calculator": "LargestPrimeFactorCalculator",
+  "solutions": [
+    [
+      "in progress"
+    ],
+    [
+      "in progress"
+    ]
+  ],
+  "inputStrings": [
+    "Value:  "
+  ]
+}

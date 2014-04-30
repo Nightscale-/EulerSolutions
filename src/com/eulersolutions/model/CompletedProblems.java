@@ -22,7 +22,8 @@ public class CompletedProblems {
 	
 	private static final String TAG = "EulerSolutions-CompletedProblems";
 	private static final int[] IDS = {R.raw.problem001,
-									  R.raw.problem002};
+									  R.raw.problem002,
+									  R.raw.problem003};
 	private ArrayList<ProblemSummary> problems = new ArrayList<ProblemSummary>();
 	
 	private Context parentContext;
